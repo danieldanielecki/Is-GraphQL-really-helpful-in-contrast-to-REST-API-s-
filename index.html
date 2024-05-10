@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/black.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>GraphQL 101</section>
+			<section>What is GraphQL?</section>
+			<section>
+				<h1>What is a Graph?</h1>
+				<img data-src="assets/graph-bad.png">
+			</section>
+			<section>
+				<h1>What is a Graph?</h1>
+				<img data-src="assets/graph-ok.png">
+			</section>
+			<section>
+				<h1>What is a Graph?</h1>
+				<img data-src="assets/graph-ok2.png">
+			</section>
+			<section>
+				<h1>Graph !== GraphQL</h1>
+			</section>
+			<section>
+				<h1>What is a GraphQL?</h1>
+				<p>Query language for API's, <strong>alternative</strong> (not replacement) for REST.</p>
+			</section>
+			<section>GraphQL vs REST</section>
+			<section>
+				<h1>GraphQL vs REST</h1>
+				<table>
+					<tr>
+						<th>Feature</th>
+						<th>REST</th>
+						<th>GraphQL</th>
+						<th>Similar/Different</th>
+					</tr>
+					<tr>
+						<td>HTTP</td>
+						<td>Yes</td>
+						<td>Yes</td>
+						<td>Similar</td>
+					</tr>
+					<tr>
+						<td>API endp.</td>
+						<td>Yes</td>
+						<td>Yes</td>
+						<td>Similar</td>
+					</tr>
+					<tr>
+						<td>JSON</td>
+						<td>Yes</td>
+						<td>Yes</td>
+						<td>Similar</td>
+					</tr>
+					<tr>
+						<td>Request</td>
+						<td>Rigid</td>
+						<td>Flexible</td>
+						<td>Different</td>
+					</tr>
+					<tr>
+						<td>Call API</td>
+						<td>Endpoint</td>
+						<td>Query</td>
+						<td>Different</td>
+					</tr>
+					<tr>
+						<td>Response</td>
+						<td>Server</td>
+						<td>Client</td>
+						<td>Different</td>
+					</tr>
+					<tr>
+						<td>Size resp.</td>
+						<td>Server</td>
+						<td>Client</td>
+						<td>Different</td>
+					</tr>
+				</table>
+			</section>
+			<section>Why GraphQL?</section>
+			<section>
+				<h1>Why GraphQL?</h1>
+				<p>Query only what you need.</p>
+			</section>
+			<section>GraphQL Basics: Schema</section>
+			<section>
+				<pre><code>
+type Query { ... }
+type Mutation {	... }
+type Subscription { ... }
+input CreateUserInput { ... }
+				</code></pre>
+			</section>
+			<section>GraphQL Basics: Object Types</section>
+			<section>
+				<h2>GraphQL Basics: Object Types</h2>
+				<pre><code>
+type User {
+	id: ID!
+	name: String!
+	email: String!
+	age: Int
+	posts: [Post!]!
+}
+type Post {
+	id: ID!
+	title: String!
+	body: String!
+	author: User!
+}
+				</code></pre>
+			</section>
+			<section>GraphQL Basics: Query</section>
+			<section>
+				<h2>GraphQL Basics: Query</h2>
+				<pre><code>
+type Query {
+	users(query: String): [User!]!
+	posts(query: String): [Post!]!
+	dummy: User!
+	post: Post!
+}
+				</code></pre>
+			</section>
+			<section>
+				<h2>GraphQL Basics: Query</h2>
+				<pre><code>
+query {
+	dummy {
+		id
+	}
+}
+				</code></pre>
+			</section>
+			<section>GraphQL Mutations and Subscriptions</section>
+			<section>
+				<h2>GraphQL Mutations</h2>
+				<pre><code>
+type Mutation {
+	createUser(data: CreateUserInput!): User!
+	deleteUser(id: ID!): User!
+	updateUser(id: ID!, data: UpdateUserInput!): User!
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
+  age: Int
+}
+				</code></pre>
+			</section>
+			<section>
+				<h2>GraphQL Mutations</h2>
+				<pre><code>
+mutation {
+	createUser(data: { name: "Daniel", email: "foo@example.com", age: 25 }) {
+		id
+		email
+		age
+	}
+}
+				</code></pre>
+			</section>
+			<section>
+				<h2>GraphQL Subscriptions</h2>
+				<pre><code>
+type Subscription {
+	count: Int!
+}
+				</code></pre>
+			</section>
+			<section>
+				<h2>GraphQL Subscriptions</h2>
+				<pre><code>
+subscription {
+	count
+}
+				</code></pre>
+			</section>
+			<section>GraphQL Tooling</section>
+			<section>
+				<h1>GraphQL Tooling</h1>
+				<ul>
+					<li>Apollo Client - library for GraphQL with any (React, Kotlin, iOS) client.</li>
+					<li>Apollo Server - GraphQL server.</li>
+					<li>GraphQL Yoga - GraphQL server.</li>
+					<li><a href="https://www.apollographql.com/docs/graphos/explorer" target="_blank">Apollo Studio/GraphOS</a> -
+						cloud IDE.</li>
+				</ul>
+			</section>
+			<section>Beyond the Basics</section>
+			<section>
+				<h1>Beyond the Basics</h1>
+				<ul>
+					<li>Authorization</li>
+					<li>Caching</li>
+					<li>Database Storage integration with GraphQL (Prisma)</li>
+					<li>Error Handling - GraphQL returns 200 (OK Status Code) even if errors occured</li>
+					<li>Global Object Identification</li>
+					<li>Pagination</li>
+					<li>Performance</li>
+					<li>Sorting</li>
+				</ul>
+			</section>
+			<section>Demo(s)</section>
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
