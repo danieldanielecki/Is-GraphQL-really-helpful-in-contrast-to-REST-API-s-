@@ -317,9 +317,58 @@ client.query({
 });
 				</code></pre>
 			</section>
+			<section>
+				<h1>Error Handling</h1>
+				<table>
+					<tr>
+						<th>REST</th>
+						<th>GraphQL</th>
+					</tr>
+					<tr>
+						<td>Status codes to indicate nature of errors</td>
+						<td>Error classes (Apollo Server)</td>
+					</tr>
+					<tr>
+						<td>Error messages within response body</td>
+						<td>Error messages within resolvers</td>
+					</tr>
+					<tr>
+						<td>Well-known middlewares</td>
+						<td>Can be nested "thanks" to GraphQL queries</td>
+					</tr>
+				</table>
+			</section>
+			<section>
+				<h2>Error Handling: REST</h2>
+				<pre><code>
+					try {
+						const resource = await Resource.findByPk(id);
+						if (resource) {
+							res.json(resource);
+						} else {
+							res.status(404).json({ error: 'Resource not found' });
+						}
+					} catch (error) {
+						res.status(500).json({ error: error.message });
+					}
+				</code></pre>
+			</section>
+			<section>
+				<h2>Error Handling: GraphQL</h2>
+				<pre><code>
+					try {
+						const resource = await Resource.findByPk(id);
+						if (resource) {
+							return resource;
+						} else {
+							throw new UserInputError('Resource not found');
+						}
+					} catch (error) {
+						throw new Error('Failed to fetch resource');
+					}
+				</code></pre>
+			</section>
 			<!-- <ul>
-				<li>Database Storage integration with GraphQL (Prisma)</li>
-				<li>Error Handling - GraphQL returns 200 (OK Status Code) even if errors occured</li>
 				<li>Global Object Identification</li>
 				<li>Pagination</li>
 				<li>Performance</li>
