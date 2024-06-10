@@ -188,7 +188,9 @@ subscription {
 }
 				</code></pre>
 			</section>
-			<section>Beyond the Basics</section>
+			<section>
+				<h1>Beyond the Basics</h1>
+			</section>
 			<section>
 				<h1>Learning Curve</h1>
 				<p>GraphQL takes <strong>more time</strong> to learn.</p>
@@ -198,7 +200,7 @@ subscription {
 				<p>Allegedly, GraphQL's caching <strong>is more complex</strong>.</p>
 			</section>
 			<section>
-				<h2>REST Caching (Express.js)</h2>
+				<h2>Caching: REST (Express.js)</h2>
 				<pre><code>
 const express = require('express');
 const app = express();
@@ -232,7 +234,7 @@ app.listen(port, () => {
 				</code></pre>
 			</section>
 			<section>
-				<h2>GraphQL Caching (Apollo Server)</h2>
+				<h2>Caching: GraphQL (Apollo Server)</h2>
 				<pre><code>
 const { ApolloServer, gql } = require('apollo-server');
 const { ApolloServerPluginCacheControl } = require('apollo-server-core');
@@ -278,7 +280,7 @@ server.listen().then(({ url }) => {
 				</code></pre>
 			</section>
 			<section>
-				<h2>GraphQL Caching (Apollo Client)</h2>
+				<h2>Caching: GraphQL (Apollo Client)</h2>
 				<pre><code>
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 
@@ -316,6 +318,10 @@ client.query({
 	console.log('From Cache:', result.data);
 });
 				</code></pre>
+			</section>
+			<section>
+				<h1>Error Handling</h1>
+				<p>Beyond 200 when an error occured.</p>
 			</section>
 			<section>
 				<h1>Error Handling</h1>
@@ -368,8 +374,38 @@ client.query({
 					}
 				</code></pre>
 			</section>
+			<section>
+				<h1>Global Object Identification</h1>
+				<p>Let my frontend fetch single ID.</p>
+			</section>
+			<section>
+				<h2>Global Object Identification: GraphQL</h2>
+				<pre><code>
+query {
+	node(id: "UmVzb3VyY2U6MQ==") {
+		id
+		... on Resource {
+			name
+			value
+		}
+	}
+}
+				</pre></code>
+			</section>
+			<section>
+				<h2>Global Object Identification: REST</h2>
+				<pre><code>
+GET /resources/:id
+				</code></pre>
+			</section>
+			<section>
+				<h1>StackOverflow</h1>
+				<p>What are Developers asking for?</p>
+			</section>
+			<section>
+				<img data-src="assets/graphql-stackoverflow.png">
+			</section>
 			<!-- <ul>
-				<li>Global Object Identification</li>
 				<li>Pagination</li>
 				<li>Performance</li>
 				<li>Sorting</li>
