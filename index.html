@@ -18,15 +18,21 @@
 <body>
 	<div class="reveal">
 		<div class="slides">
-			<section>Is GraphQL really helpful in contrast to REST API's?</section>
-			<section>What is GraphQL?</section>
+			<section>
+				<h2>Is GraphQL really helpful in contrast to REST API's?</h2>
+			</section>
+			<section>
+				<h1>What is GraphQL?</h1>
+			</section>
 			<section>
 				<h1>What is a GraphQL?</h1>
 				<p>Query language for API's, <strong>alternative</strong> (not replacement) for REST.</p>
 			</section>
-			<section>GraphQL vs REST</section>
 			<section>
 				<h1>GraphQL vs REST</h1>
+			</section>
+			<section>
+				<h2>GraphQL vs REST</h2>
 				<table>
 					<tr>
 						<th>Feature</th>
@@ -78,22 +84,29 @@
 					</tr>
 				</table>
 			</section>
-			<section>Why GraphQL?</section>
 			<section>
 				<h1>Why GraphQL?</h1>
+			</section>
+			<section>
+				<h2>Why GraphQL?</h2>
 				<p>Query only what you need.</p>
 			</section>
 			<section>
 				<h1>Why GraphQL?</h1>
 				<ul>
 					<li>Performance*</li>
+					<li>Security</li>
 					<li>Single Endpoint</li>
-					<li>Subscriptions</li>
 					<li>Strong Typing</li>
+					<li>Subscriptions</li>
 				</ul>
 			</section>
-			<section>GraphQL Basics</section>
-			<section>GraphQL Basics: Schema</section>
+			<section>
+				<h1>GraphQL Basics</h1>
+			</section>
+			<section>
+				<h2>GraphQL Basics: Schema</h2>
+			</section>
 			<section>
 				<pre><code>
 type Query { ... }
@@ -102,7 +115,9 @@ type Subscription { ... }
 input CreateUserInput { ... }
 				</code></pre>
 			</section>
-			<section>GraphQL Basics: Object Types</section>
+			<section>
+				<h2>GraphQL Basics: Object Types</h2>
+			</section>
 			<section>
 				<h2>GraphQL Basics: Object Types</h2>
 				<pre><code>
@@ -121,7 +136,9 @@ type Post {
 }
 				</code></pre>
 			</section>
-			<section>GraphQL Basics: Query</section>
+			<section>
+				<h2>GraphQL Basics: Query</h2>
+			</section>
 			<section>
 				<h2>GraphQL Basics: Query</h2>
 				<pre><code>
@@ -143,7 +160,9 @@ query {
 }
 				</code></pre>
 			</section>
-			<section>GraphQL Mutations and Subscriptions</section>
+			<section>
+				<h2>GraphQL Mutations and Subscriptions</h2>
+			</section>
 			<section>
 				<h2>GraphQL Mutations</h2>
 				<pre><code>
@@ -347,31 +366,31 @@ client.query({
 			<section>
 				<h2>Error Handling: REST</h2>
 				<pre><code>
-					try {
-						const resource = await Resource.findByPk(id);
-						if (resource) {
-							res.json(resource);
-						} else {
-							res.status(404).json({ error: 'Resource not found' });
-						}
-					} catch (error) {
-						res.status(500).json({ error: error.message });
-					}
+try {
+	const resource = await Resource.findByPk(id);
+	if (resource) {
+		res.json(resource);
+	} else {
+		res.status(404).json({ error: 'Resource not found' });
+	}
+} catch (error) {
+	res.status(500).json({ error: error.message });
+}
 				</code></pre>
 			</section>
 			<section>
 				<h2>Error Handling: GraphQL</h2>
 				<pre><code>
-					try {
-						const resource = await Resource.findByPk(id);
-						if (resource) {
-							return resource;
-						} else {
-							throw new UserInputError('Resource not found');
-						}
-					} catch (error) {
-						throw new Error('Failed to fetch resource');
-					}
+try {
+	const resource = await Resource.findByPk(id);
+	if (resource) {
+		return resource;
+	} else {
+		throw new UserInputError('Resource not found');
+	}
+} catch (error) {
+	throw new Error('Failed to fetch resource');
+}
 				</code></pre>
 			</section>
 			<section>
@@ -419,17 +438,163 @@ GET /resources/:id
 				<p>Introspection in practice.</p>
 			</section>
 			<section>
+				<img data-src="assets/introspection-off-prod.png">
+			</section>
+			<section>
 				<img data-src="assets/introspection-security.png">
 			</section>
 			<section>
 				<img data-src="assets/owasp-introspection.png">
 			</section>
 			<section>
-				<img data-src="assets/introspection-off-prod.png">
+				<h1>Standardization<br>vs<br>Fragmentation</h1>
+			</section>
+			<section>
+				<h2>Standardization: REST</h2>
+				<p>HTTP methods (GET, POST, PUT, DELETE), status codes (200, 404, 500).</p>
+			</section>
+			<section>
+				<h2>Fragmentation: GraphQL</h2>
+				<p>Apollo Server, GraphQL Yoga, Envelop, Express-GraphQL (deprecated), Apollo Client, Relay, urql.</p>
+			</section>
+			<section>
+				<h1>Demo</h1>
+				<p>Standardization vs Fragmentation on an example of simplest example.</p>
+			</section>
+			<section>
+				<h1>Unit Testing</h1>
+			</section>
+			<section>
+				<h2>Unit Testing: REST</h2>
+				<pre><code>
+const express = require('express');
+const app = express();
+app.use(express.json());
+
+let resources = [{ id: 1, name: 'Resource1' }];
+
+app.get('/api/resources', (req, res) => {
+	res.json(resources);
+});
+
+app.post('/api/resources', (req, res) => {
+	const newResource = { id: resources.length + 1, name: req.body.name };
+	resources.push(newResource);
+	res.status(201).json(newResource);
+});
+
+module.exports = app;
+				</pre></code>
+			</section>
+			<section>
+				<h2>Unit Testing: GraphQL</h2>
+				<pre><code>
+const { ApolloServer, gql } = require('apollo-server');
+
+const typeDefs = gql`
+	type Resource {
+		id: ID!
+		name: String!
+	}
+
+	type Query {
+		resources: [Resource]
+	}
+
+	type Mutation {
+		createResource(name: String!): Resource
+	}
+`;
+
+let resources = [{ id: 1, name: 'Resource1' }];
+
+const resolvers = {
+	Query: {
+		resources: () => resources,
+	},
+	Mutation: {
+		createResource: (parent, { name }) => {
+			const newResource = { id: resources.length + 1, name };
+			resources.push(newResource);
+			return newResource;
+		},
+	},
+};
+
+const server = new ApolloServer({ typeDefs, resolvers });
+
+module.exports = server;
+				</pre></code>
+			</section>
+			<section>
+				<h2>Unit Testing: REST</h2>
+				<pre><code>
+const request = require('supertest');
+const app = require('../app');
+const { expect } = require('chai');
+
+describe('REST API', () => {
+	it('should get all resources', async () => {
+		const res = await request(app).get('/api/resources');
+		expect(res.status).to.equal(200);
+		expect(res.body).to.be.an('array');
+		expect(res.body.length).to.equal(1);
+	});
+
+	it('should create a new resource', async () => {
+		const res = await request(app).post('/api/resources').send({ name: 'Resource2' });
+		expect(res.status).to.equal(201);
+		expect(res.body).to.have.property('id');
+		expect(res.body).to.have.property('name', 'Resource2');
+	});
+});
+				</pre></code>
+			</section>
+			<section>
+				<h2>Unit Testing: GraphQL</h2>
+				<pre><code>
+const { createTestClient } = require('apollo-server-testing');
+const { expect } = require('chai');
+const server = require('../schema');
+
+const { query, mutate } = createTestClient(server);
+
+describe('GraphQL API', () => {
+	it('should get all resources', async () => {
+		const GET_RESOURCES = `
+			query {
+				resources {
+id
+name
+				}
+			}
+		`;
+		const res = await query({ query: GET_RESOURCES });
+		expect(res.data.resources).to.be.an('array');
+		expect(res.data.resources.length).to.equal(1);
+	});
+
+	it('should create a new resource', async () => {
+		const CREATE_RESOURCE = `
+			mutation($name: String!) {
+				createResource(name: $name) {
+					id
+					name
+				}
+			}
+		`;
+		const res = await mutate({ mutation: CREATE_RESOURCE, variables: { name: 'Resource2' } });
+		expect(res.data.createResource).to.have.property('id');
+		expect(res.data.createResource).to.have.property('name', 'Resource2');
+	});
+});
+				</pre></code>
+			</section>
+			<section>
+				<h1>Conclusion</h1>
 			</section>
 			<!-- <ul>
 				<li>Pagination</li>
-				<li>Performance</li>
 				<li>Sorting</li>
 			</ul> -->
 		</div>
