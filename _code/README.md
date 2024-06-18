@@ -1,6 +1,6 @@
 ### Introspection
 
-(show basic introspection)
+#### Show basic introspection
 
 ```graphql
 {
@@ -12,7 +12,51 @@
 }
 ```
 
-After that, show how `useDisableIntrospection()` works by simply uncommenting it and reloading the page.
+#### Show some information about query
+
+```graphql
+{
+  __schema {
+    queryType {
+      name
+    }
+  }
+}
+```
+
+#### Show some information about Post
+
+```graphql
+{
+  __type(name: "Post") {
+    name
+  }
+}
+```
+
+#### Show more information about Post
+
+```graphql
+{
+  __type(name: "Post") {
+    name
+    kind
+  }
+}
+```
+
+#### Show some information about CreateUserInput
+
+```graphql
+{
+  __type(name: "CreateUserInput") {
+    name
+    kind
+  }
+}
+```
+
+##### After that, show how `useDisableIntrospection()` works by simply uncommenting it and reloading the page.
 
 ### Circular Queries
 
