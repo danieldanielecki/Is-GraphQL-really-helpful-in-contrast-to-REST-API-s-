@@ -56,6 +56,44 @@
 }
 ```
 
+#### Show even more information about Post
+
+```graphql
+{
+  __type(name: "Post") {
+    name
+    fields {
+      name
+      type {
+        name
+        kind
+      }
+    }
+  }
+}
+```
+
+#### Show last introspection about Post
+
+```graphql
+{
+  __type(name: "Post") {
+    name
+    fields {
+      name
+      type {
+        name
+        kind
+        ofType {
+          name
+          kind
+        }
+      }
+    }
+  }
+}
+```
+
 ##### After that, show how `useDisableIntrospection()` works by simply uncommenting it and reloading the page.
 
 ### Circular Queries
