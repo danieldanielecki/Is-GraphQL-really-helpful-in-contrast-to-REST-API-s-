@@ -418,6 +418,53 @@ GET /resources/:id
 				</code></pre>
 			</section>
 			<section>
+				<h1>Pagination</h1>
+				<p>Let my frontend fetch a page.</p>
+			</section>
+			<section>
+				<h2>Pagination: GraphQL</h2>
+				<pre><code>
+query {
+	items(limit: 10, offset: 20) {
+		total
+		limit
+		offset
+		items {
+			id
+			name
+		}
+	}
+}
+				</pre></code>
+			</section>
+			<section>
+				<h2>Pagination: REST</h2>
+				<pre><code>
+GET /api/items?limit=10&offset=20
+				</code></pre>
+			</section>
+			<section>
+				<h1>Sorting</h1>
+				<p>Let my frontend sort the results.</p>
+			</section>
+			<section>
+				<h2>Sorting: GraphQL</h2>
+				<pre><code>
+query {
+	items(sort: { field: "name", order: DESC }) {
+		id
+		name
+	}
+}
+			</pre></code>
+			</section>
+			<section>
+				<h2>Sorting: REST</h2>
+				<pre><code>
+GET /api/items?sortBy=name&order=desc
+				</code></pre>
+			</section>
+			<section>
 				<h1>StackOverflow</h1>
 				<p>What are Developers asking for?</p>
 			</section>
@@ -439,6 +486,9 @@ GET /resources/:id
 			</section>
 			<section>
 				<img data-src="assets/introspection-off-prod.png">
+			</section>
+			<section>
+				<img data-src="assets/graphql-voyager.png">
 			</section>
 			<section>
 				<img data-src="assets/introspection-security.png">
@@ -591,12 +641,26 @@ name
 				</pre></code>
 			</section>
 			<section>
+				<h1>Trends</h1>
+			</section>
+			<section>
+				<img data-src="assets/interest-github.png">
+			</section>
+			<section>
+				<img data-src="assets/interest-google-trends.png">
+			</section>
+			<section>
+				<img data-src="assets/interest-stackoverflow.png">
+			</section>
+			<section>
+				<img data-src="assets/interest-satisfaction.png">
+			</section>
+			<section>
+				<img data-src="assets/graphql-newsletter.png">
+			</section>
+			<section>
 				<h1>Conclusion</h1>
 			</section>
-			<!-- <ul>
-				<li>Pagination</li>
-				<li>Sorting</li>
-			</ul> -->
 		</div>
 	</div>
 
