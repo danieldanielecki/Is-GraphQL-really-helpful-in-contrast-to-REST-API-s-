@@ -20,12 +20,10 @@
 		<div class="slides">
 			<section>
 				<h2>Is GraphQL really helpful in contrast to REST API's?</h2>
+				<p>Daniel Danielecki</p>
 			</section>
 			<section>
-				<h1>GraphQL?</h1>
-			</section>
-			<section>
-				<h1>What is a GraphQL?</h1>
+				<h2>What is a GraphQL?</h2>
 				<p>Query language for API's, <strong>alternative</strong> (not replacement) for REST.</p>
 			</section>
 			<section>
@@ -88,26 +86,41 @@
 				<h1>Why GraphQL?</h1>
 			</section>
 			<section>
+				<h1>Frontend?</h1>
+			</section>
+			<section>
 				<h2>Why GraphQL?</h2>
 				<p>Query only what you need.</p>
 			</section>
 			<section>
-				<h1>Why GraphQL?</h1>
+				<h1>Backend?</h1>
+			</section>
+			<section>
+				<h2>Why GraphQL?</h2>
 				<ul>
-					<li>Performance*</li>
-					<li>Security</li>
+					<li>No Over/Under-Fetching</li>
+					<li>Non-null</li>
+					<li>Performance</li>
 					<li>Single Endpoint</li>
 					<li>Strong Typing</li>
 					<li>Subscriptions</li>
+					<li>Versioning</li>
+					<li>...</li>
 				</ul>
 			</section>
 			<section>
+				<h1>GraphQL?</h1>
+			</section>
+			<section>
+				<span>(optional)</span>
 				<h1>GraphQL Basics</h1>
 			</section>
 			<section>
+				<span>(optional)</span>
 				<h2>GraphQL Basics: Schema</h2>
 			</section>
 			<section>
+				<span>(optional)</span>
 				<pre><code>
 type Query { ... }
 type Mutation {	... }
@@ -116,9 +129,11 @@ input CreateUserInput { ... }
 				</code></pre>
 			</section>
 			<section>
+				<span>(optional)</span>
 				<h2>GraphQL Basics: Object Types</h2>
 			</section>
 			<section>
+				<span>(optional)</span>
 				<h2>GraphQL Basics: Object Types</h2>
 				<pre><code>
 type User {
@@ -137,9 +152,11 @@ type Post {
 				</code></pre>
 			</section>
 			<section>
+				<span>(optional)</span>
 				<h2>GraphQL Basics: Query</h2>
 			</section>
 			<section>
+				<span>(optional)</span>
 				<h2>GraphQL Basics: Query</h2>
 				<pre><code>
 type Query {
@@ -151,6 +168,7 @@ type Query {
 				</code></pre>
 			</section>
 			<section>
+				<span>(optional)</span>
 				<h2>GraphQL Basics: Query</h2>
 				<pre><code>
 query {
@@ -161,12 +179,15 @@ query {
 				</code></pre>
 			</section>
 			<section>
+				<span>(optional)</span>
 				<h2>GraphQL Query == REST "GET"</h2>
 			</section>
 			<section>
-				<h2>GraphQL Mutations and Subscriptions</h2>
+				<span>(optional)</span>
+				<h2>GraphQL Mutations</h2>
 			</section>
 			<section>
+				<span>(optional)</span>
 				<h2>GraphQL Mutations</h2>
 				<pre><code>
 type Mutation {
@@ -183,6 +204,7 @@ input CreateUserInput {
 				</code></pre>
 			</section>
 			<section>
+				<span>(optional)</span>
 				<h2>GraphQL Mutations</h2>
 				<pre><code>
 mutation {
@@ -195,9 +217,15 @@ mutation {
 				</code></pre>
 			</section>
 			<section>
-				<h2>GraphQL Mutation == REST "POST", "PUT", "PATCH", "DELETE" (C<s>R</s>UD)</h2>
+				<span>(optional)</span>
+				<h3>GraphQL Mutation<br>==<br>REST "POST", "PUT", "PATCH", "DELETE" (C<s>R</s>UD)</h3>
 			</section>
 			<section>
+				<span>(optional)</span>
+				<h2>GraphQL Subscriptions</h2>
+			</section>
+			<section>
+				<span>(optional)</span>
 				<h2>GraphQL Subscriptions</h2>
 				<pre><code>
 type Subscription {
@@ -206,6 +234,7 @@ type Subscription {
 				</code></pre>
 			</section>
 			<section>
+				<span>(optional)</span>
 				<h2>GraphQL Subscriptions</h2>
 				<pre><code>
 subscription {
@@ -214,9 +243,11 @@ subscription {
 				</code></pre>
 			</section>
 			<section>
-				<h2>GraphQL Subscription == REST WebSockets</h2>
+				<span>(optional)</span>
+				<h2>GraphQL Subscription<br>==<br>REST WebSockets</h2>
 			</section>
 			<section>
+				<span>(optional)</span>
 				<h1>Demo?</h1>
 				<p>Simplest example of GraphQL query.</p>
 			</section>
@@ -225,11 +256,17 @@ subscription {
 			</section>
 			<section>
 				<h1>Learning Curve</h1>
+			</section>
+			<section>
+				<h2>Learning Curve</h2>
 				<p>GraphQL takes <strong>more time</strong> to learn.</p>
 			</section>
 			<section>
 				<h1>Caching</h1>
-				<p>Allegedly, GraphQL's caching <strong>is more complex</strong>.</p>
+			</section>
+			<section>
+				<h2>Caching</h2>
+				<p>GraphQL's caching <strong>is more complex</strong>.</p>
 			</section>
 			<section>
 				<h2>Caching: REST (Express.js)</h2>
@@ -353,6 +390,9 @@ client.query({
 			</section>
 			<section>
 				<h1>Error Handling</h1>
+			</section>
+			<section>
+				<h2>Error Handling</h2>
 				<p>Beyond 200 when an error occured.</p>
 			</section>
 			<section>
@@ -407,19 +447,33 @@ try {
 				</code></pre>
 			</section>
 			<section>
+				<h2>Demo</h2>
+				<p>Let's see an error.</p>
+			</section>
+			<section>
+				<h2>Some errors<br>!==<br>200</h2>
+				<ul>
+					<li>Bad Request: 400</li>
+					<li>Unauthorized: 401</li>
+					<li>Forbidden: 403</li>
+					<li>Internal Server Error: 500</li>
+				</ul>
+			</section>
+			<section>
 				<h1>Global Object Identification</h1>
+			</section>
+			<section>
+				<h2>Global Object Identification</h2>
 				<p>Let my frontend fetch single ID.</p>
 			</section>
 			<section>
 				<h2>Global Object Identification: GraphQL</h2>
 				<pre><code>
 query {
-	node(id: "UmVzb3VyY2U6MQ==") {
+	user(id: "1") {
 		id
-		... on Resource {
-			name
-			value
-		}
+		name
+		email
 	}
 }
 				</pre></code>
@@ -432,6 +486,9 @@ GET /resources/:id
 			</section>
 			<section>
 				<h1>Pagination</h1>
+			</section>
+			<section>
+				<h2>Pagination</h2>
 				<p>Let my frontend fetch a page.</p>
 			</section>
 			<section>
@@ -458,6 +515,9 @@ GET /api/items?limit=10&offset=20
 			</section>
 			<section>
 				<h1>Sorting</h1>
+			</section>
+			<section>
+				<h2>Sorting</h2>
 				<p>Let my frontend sort the results.</p>
 			</section>
 			<section>
@@ -479,6 +539,9 @@ GET /api/items?sortBy=name&order=desc
 			</section>
 			<section>
 				<h1>StackOverflow</h1>
+			</section>
+			<section>
+				<h2>StackOverflow</h2>
 				<p>What are Developers asking for?</p>
 			</section>
 			<section>
@@ -489,6 +552,9 @@ GET /api/items?sortBy=name&order=desc
 			</section>
 			<section>
 				<img data-src="assets/graphql-stackoverflow3.png">
+			</section>
+			<section>
+				<h1>Introspection</h1>
 			</section>
 			<section>
 				<img data-src="assets/introspection.png">
@@ -519,6 +585,25 @@ GET /api/items?sortBy=name&order=desc
 			<section>
 				<h2>Fragmentation: GraphQL</h2>
 				<p>Apollo Server, GraphQL Yoga, Envelop, Express-GraphQL (deprecated), Apollo Client, Relay, urql.</p>
+			</section>
+			<section>
+				<h1>Projects</h1>
+			</section>
+			<section>
+				<img data-src="assets/dataloader.png">
+			</section>
+			<section>
+				<img data-src="assets/graphql-voyager-outdated.png">
+			</section>
+			<section>
+				<img data-src="assets/graphql-voyager-fails.png">
+			</section>
+			<section>
+				<img data-src="assets/graphql-newsletter.png">
+			</section>
+			<section>
+				<img data-src="assets/maintainers-apollo-graphql.png">
+				<img data-src="assets/maintainers-theguild.png">
 			</section>
 			<section>
 				<h1>Unit Testing</h1>
@@ -667,9 +752,6 @@ name
 			</section>
 			<section>
 				<img data-src="assets/interest-satisfaction.png">
-			</section>
-			<section>
-				<img data-src="assets/graphql-newsletter.png">
 			</section>
 			<section>
 				<h1>Conclusion</h1>
