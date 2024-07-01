@@ -1,3 +1,139 @@
+# Demo part instructions
+
+## Demo optional
+
+### Simplest example of GraphQL query
+
+#### Show basic dummy query
+
+```graphql
+query {
+  users {
+    id
+  }
+}
+```
+
+#### Show one more field having also name (as per how it's written in schema definition)
+
+```graphql
+query {
+  users {
+    id
+    name
+  }
+}
+```
+
+#### Show one more field having also email (as per how it's written in schema definition)
+
+```graphql
+query {
+  users {
+    id
+    name
+    email
+  }
+}
+```
+
+#### Show one more field having also optional age (as per how it's written in schema definition)
+
+```graphql
+query {
+  users {
+    id
+    name
+    email
+    age
+  }
+}
+```
+
+#### Show one more field having nested posts (as per how it's written in schema definition)
+
+```graphql
+query {
+  users {
+    id
+    name
+    email
+    age
+    posts {
+      id
+    }
+  }
+}
+```
+
+#### Show one nested field inside already nested posts (as per how it's written in schema definition)
+
+```graphql
+query {
+  users {
+    id
+    name
+    email
+    age
+    posts {
+      id
+      title
+    }
+  }
+}
+```
+
+#### Show one last nested field inside already nested posts (as per how it's written in schema definition)
+
+```graphql
+query {
+  users {
+    id
+    name
+    email
+    age
+    posts {
+      id
+      title
+      published
+    }
+  }
+}
+```
+
+#### Show real use case in index.html/js
+
+```graphql
+query {
+  users {
+    id
+    name
+  }
+}
+```
+
+##### Show network tab with the data under `Preview` of request
+
+#### Show real use case in index.html/js with one extra field
+
+```graphql
+query {
+  users {
+    id
+    name
+    email
+  }
+}
+```
+
+##### Show network tab with the data under `Preview` of request having also email
+
+##### Print to HTML the email
+
+##### Revert it back not to have in query `email` and show `undefined` on HTML/under `Preview` of request
+
+##### Show `200 OK` Status Code under `Preview` of request even if this resource doesn't return anything
+
 ### Introspection
 
 #### Show basic introspection
