@@ -1,5 +1,7 @@
 # Demo part instructions
 
+Note: when facings problems with installing (outdated) packages, try to run `npm i --legacy-peer-deps`, and try to operate with `npm`, instead of `yarn`.
+
 ## Demo Optional
 
 ### Simplest example of GraphQL query
