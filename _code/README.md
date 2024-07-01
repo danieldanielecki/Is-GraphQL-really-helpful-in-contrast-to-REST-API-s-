@@ -4,7 +4,7 @@
 
 ### Simplest example of GraphQL query
 
-#### Show basic dummy query
+#### Show basic dummy query: `http://localhost:4000/graphql`
 
 ```graphql
 query {
@@ -14,7 +14,7 @@ query {
 }
 ```
 
-#### Show one more field having also name (as per how it's written in schema definition)
+#### Show one more field having also name (as per how it's written in schema definition): `http://localhost:4000/graphql`
 
 ```graphql
 query {
@@ -25,7 +25,7 @@ query {
 }
 ```
 
-#### Show one more field having also email (as per how it's written in schema definition)
+#### Show one more field having also email (as per how it's written in schema definition): `http://localhost:4000/graphql`
 
 ```graphql
 query {
@@ -37,7 +37,7 @@ query {
 }
 ```
 
-#### Show one more field having also optional age (as per how it's written in schema definition)
+#### Show one more field having also optional age (as per how it's written in schema definition): `http://localhost:4000/graphql`
 
 ```graphql
 query {
@@ -50,7 +50,7 @@ query {
 }
 ```
 
-#### Show one more field having nested posts (as per how it's written in schema definition)
+#### Show one more field having nested posts (as per how it's written in schema definition): `http://localhost:4000/graphql`
 
 ```graphql
 query {
@@ -66,7 +66,7 @@ query {
 }
 ```
 
-#### Show one nested field inside already nested posts (as per how it's written in schema definition)
+#### Show one nested field inside already nested posts (as per how it's written in schema definition): `http://localhost:4000/graphql`
 
 ```graphql
 query {
@@ -83,7 +83,7 @@ query {
 }
 ```
 
-#### Show one last nested field inside already nested posts (as per how it's written in schema definition)
+#### Show one last nested field inside already nested posts (as per how it's written in schema definition): `http://localhost:4000/graphql`
 
 ```graphql
 query {
@@ -101,7 +101,7 @@ query {
 }
 ```
 
-#### Show real use case in index.html/js
+#### Show real use case in `index.html`/`index.js`: `http://localhost:1234`
 
 ```graphql
 query {
@@ -112,9 +112,9 @@ query {
 }
 ```
 
-##### Show network tab with the data under `Preview` of request
+##### Show network tab with the data under `Preview` of request: `http://localhost:1234`
 
-#### Show real use case in index.html/js with one extra field
+#### Show real use case in `index.html`/`index.js` with one extra field: `http://localhost:1234`
 
 ```graphql
 query {
@@ -126,15 +126,102 @@ query {
 }
 ```
 
-##### Show network tab with the data under `Preview` of request having also email
+##### Show network tab with the data under `Preview` of request having also email: `http://localhost:1234`
 
-##### Print to HTML the email
+##### Show in HTML the email: `http://localhost:1234`
 
-##### Revert it back not to have in query `email` and show `undefined` on HTML/under `Preview` of request
+```html
+<h3>${user.email}</h3>
+```
 
-##### Show `200 OK` Status Code under `Preview` of request even if this resource doesn't return anything
+#### Revert it back not to have in query `email` and show `undefined` on HTML/under `Preview` of request: `http://localhost:1234`
 
-### Introspection
+```graphql
+query {
+  users {
+    id
+    name
+  }
+}
+```
+
+##### Show `200 OK` Status Code under `Preview` of request even if this resource doesn't return anything: `http://localhost:1234`
+
+#### Show executing create mutation
+
+```graphql
+mutation {
+  createUser(data: { name: "Daniel", email: "foo@example.com", age: 25 }) {
+    id
+    email
+    age
+  }
+}
+```
+
+##### Show added new user: `http://localhost:4000/graphql`
+
+```graphql
+query {
+  users {
+    id
+    email
+    name
+    age
+  }
+}
+```
+
+##### Refresh `index.html`/`index.js` to show also `Daniel` popping up: `http://localhost:1234`
+
+## Demo error
+
+### Let's see an error
+
+#### Show `200 OK` Status Code under `Preview` of request when trying to print email, which isn't queried: `http://localhost:1234`
+
+```graphql
+query {
+  users {
+    id
+    name
+  }
+}
+```
+
+```html
+<h3>${user.email}</h3>
+```
+
+#### Show `200 OK` Status Code under `Preview` of request when trying to query some random not existing field: `http://localhost:1234`
+
+```graphql
+query {
+  users {
+    id
+    name
+    blablabla
+  }
+}
+```
+
+#### Show `200 OK` Status Code under `Preview` of request when trying to exectute mutation for already existing email: `http://localhost:4000/graphql`
+
+```graphql
+mutation {
+  createUser(data: { name: "Daniel", email: "foo@example.com", age: 25 }) {
+    id
+    email
+    age
+  }
+}
+```
+
+##### Show it inside the code `throw new GraphQLError("Email taken");` to highlight no REST-like status codes, but `GraphQL` ones
+
+## Demo introspection
+
+### Introspection in practice
 
 #### Show basic introspection
 
