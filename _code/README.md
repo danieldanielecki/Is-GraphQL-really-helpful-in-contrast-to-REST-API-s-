@@ -1,6 +1,6 @@
 # Demo part instructions
 
-## Demo optional
+## Demo Optional
 
 ### Simplest example of GraphQL query
 
@@ -147,7 +147,7 @@ query {
 
 ##### Show `200 OK` Status Code under `Preview` of request even if this resource doesn't return anything: `http://localhost:1234`
 
-#### Show executing create mutation
+#### Show executing create mutation: `http://localhost:4000/graphql`
 
 ```graphql
 mutation {
@@ -174,7 +174,15 @@ query {
 
 ##### Refresh `index.html`/`index.js` to show also `Daniel` popping up: `http://localhost:1234`
 
-## Demo error
+#### Show Subscription: `http://localhost:4000/graphql`
+
+```graphql
+subscription {
+  count
+}
+```
+
+## Demo Error
 
 ### Let's see an error
 
@@ -219,11 +227,11 @@ mutation {
 
 ##### Show it inside the code `throw new GraphQLError("Email taken");` to highlight no REST-like status codes, but `GraphQL` ones
 
-## Demo introspection
+## Demo Introspection
 
 ### Introspection in practice
 
-#### Show basic introspection
+#### Show basic introspection: `http://localhost:4000/graphql`
 
 ```graphql
 {
@@ -235,7 +243,7 @@ mutation {
 }
 ```
 
-#### Show some information about query
+#### Show some information about query: `http://localhost:4000/graphql`
 
 ```graphql
 {
@@ -247,7 +255,7 @@ mutation {
 }
 ```
 
-#### Show some information about Post
+#### Show some information about Post: `http://localhost:4000/graphql`
 
 ```graphql
 {
@@ -257,7 +265,7 @@ mutation {
 }
 ```
 
-#### Show more information about Post
+#### Show more information about Post: `http://localhost:4000/graphql`
 
 ```graphql
 {
@@ -268,7 +276,7 @@ mutation {
 }
 ```
 
-#### Show some information about CreateUserInput
+#### Show some information about CreateUserInput: `http://localhost:4000/graphql`
 
 ```graphql
 {
@@ -279,7 +287,7 @@ mutation {
 }
 ```
 
-#### Show even more information about Post
+#### Show even more information about Post: `http://localhost:4000/graphql`
 
 ```graphql
 {
@@ -296,7 +304,7 @@ mutation {
 }
 ```
 
-#### Show last introspection about Post
+#### Show last introspection about Post: `http://localhost:4000/graphql`
 
 ```graphql
 {
@@ -317,11 +325,13 @@ mutation {
 }
 ```
 
-##### After that, show how `useDisableIntrospection()` works by simply uncommenting it and reloading the page.
+##### After that, show how `useDisableIntrospection()` works by simply uncommenting it and reloading the page: `http://localhost:4000/graphql`
 
-### Circular Queries
+## Demo Circular Queries
 
-(show users query with 5 fields and nested posts, author, posts and author)
+### Digging with nesting
+
+#### Show users query with 5 fields and nested posts, author, posts and author: `http://localhost:4000/graphql`
 
 ```graphql
 query {
@@ -358,17 +368,11 @@ query {
 }
 ```
 
-### Apollo Client demo
+## Demo Unit Testing
 
-(little example how it looks in reality in frontend)
+### Unit Testing in GraphQL
 
-1. `yarn start` in `graphql-prisma`
-2. `yarn start` in `apollo-client`
-3. Open `localhost:1234`
-
-### Testing demo
-
-(shortly show tested 1 of each: query, mutation, and subscription)
+#### Shortly show tested 1 of each: query, mutation, and subscription
 
 1. `cd _code`
 2. `cd unit-testing`
