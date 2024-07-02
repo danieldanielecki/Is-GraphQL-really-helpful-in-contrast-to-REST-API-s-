@@ -172,7 +172,7 @@ type Query {
 				<h2>GraphQL Basics: Query</h2>
 				<pre><code>
 query {
-	dummy {
+	users {
 		id
 	}
 }
@@ -396,7 +396,7 @@ client.query({
 				<p>Beyond 200 when an error occured.</p>
 			</section>
 			<section>
-				<h1>Error Handling</h1>
+				<h2>Error Handling</h2>
 				<table>
 					<tr>
 						<th>REST</th>
@@ -409,10 +409,6 @@ client.query({
 					<tr>
 						<td>Error messages within response body</td>
 						<td>Error messages within resolvers</td>
-					</tr>
-					<tr>
-						<td>Well-known middlewares</td>
-						<td>Can be nested "thanks" to GraphQL queries</td>
 					</tr>
 				</table>
 			</section>
@@ -554,6 +550,24 @@ GET /api/items?sortBy=name&order=desc
 				<img data-src="assets/graphql-stackoverflow3.png">
 			</section>
 			<section>
+				<h2>Won't work</h2>
+				<pre><code>
+query {
+	*
+}
+			</code></pre>
+			</section>
+			<section>
+				<h2>Won't work</h2>
+				<pre><code>
+query {
+	users {
+		*
+	}
+}
+			</code></pre>
+			</section>
+			<section>
 				<h1>Introspection</h1>
 			</section>
 			<section>
@@ -570,10 +584,10 @@ GET /api/items?sortBy=name&order=desc
 				<img data-src="assets/graphql-voyager.png">
 			</section>
 			<section>
-				<img data-src="assets/introspection-security.png">
+				<img data-src="assets/owasp-introspection.png">
 			</section>
 			<section>
-				<img data-src="assets/owasp-introspection.png">
+				<img data-src="assets/introspection-security.png">
 			</section>
 			<section>
 				<h1>Circular Queries</h1>
@@ -762,6 +776,16 @@ name
 			</section>
 			<section>
 				<h1>Conclusion</h1>
+			</section>
+			<section>
+				<h2>Useful, but</h2>
+				<ul>
+					<li>Caching</li>
+					<li>Error Handling</li>
+					<li>Introspection</li>
+					<li>Up-to-date projects</li>
+					<li>Unit Testing</li>
+				</ul>
 			</section>
 			<section>
 				<img data-src="assets/ditectrev-github.png">
