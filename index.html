@@ -404,7 +404,7 @@ client.query({
 					</tr>
 					<tr>
 						<td>Status codes to indicate nature of errors</td>
-						<td>Error classes (Apollo Server)</td>
+						<td>Error classes</td>
 					</tr>
 					<tr>
 						<td>Error messages within response body</td>
@@ -729,8 +729,8 @@ describe('GraphQL API', () => {
 		const GET_RESOURCES = `
 			query {
 				resources {
-id
-name
+					id
+					name
 				}
 			}
 		`;
@@ -781,8 +781,10 @@ name
 				<h2>Useful, but</h2>
 				<ul>
 					<li>Caching</li>
+					<li>Circular Queries (FE)</li>
 					<li>Error Handling</li>
 					<li>Introspection</li>
+					<li>query *</li>
 					<li>Up-to-date projects</li>
 					<li>Unit Testing</li>
 				</ul>
